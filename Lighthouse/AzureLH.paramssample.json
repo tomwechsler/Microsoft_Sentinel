@@ -11,7 +11,7 @@
         "value": "Your Description"
         },
         "managedByTenantId": {
-        "value": "Your AAD Tenant ID"
+        "value": "Your Entra Tenant ID"
         },
         "authorizations": {
             "value": [
