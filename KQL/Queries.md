@@ -7,6 +7,14 @@ SigninLogs
 | where AlternateSignInName contains "Alexw@tomscloud.ch"
 ```
 
+**Break Glass Admin Account Query**  
+
+```
+SigninLogs
+| project UserPrincipalName 
+| where UserPrincipalName == "admin365@yourdomain.onmicrosoft.com"
+```
+
 **Risky Users Query**  
 
 ```
@@ -19,10 +27,10 @@ IdentityRiskEventsSigninLogs
 | extend MaliciousIP = IPAddress
 ```
 
-**Break Glass Admin Account Query**  
+**Search for Intune Devices**  
 
 ```
-SigninLogs
-| project UserPrincipalName 
-| where UserPrincipalName == "admin365@yourdomain.onmicrosoft.com"
+IntuneDevices
+| where todatetime(CreatedDate) > ago(21d)
+| distinct DeviceName, UserName, CreatedDate, SerialNumber, Model
 ```
