@@ -27,6 +27,17 @@ IdentityRiskEventsSigninLogs
 | extend MaliciousIP = IPAddress
 ```
 
+**Global Administrator Role Assignment Query**  
+
+```
+AuditLogs
+| where Category == "RoleManagement"
+| where Result == "success"
+| where OperationName == "Add member to role"
+| where (TargetResources has "Company" or TargetResources has "Tenant" or TargetResources has "Global Administrator")
+| project TargetUser = tostring(TargetResources.[0].["userPrincipalName"]), InitiatedBy = tostring(InitiatedBy.user.["userPrincipalName"])
+```
+
 **Search for Intune Devices**  
 
 ```
