@@ -18,7 +18,7 @@ SigninLogs
 **Risky Users Query**  
 
 ```
-IdentityRiskEventsSigninLogs
+SigninLogs
 | where RiskState contains "atRisk"
 | extend City = tostring(LocationDetails.city)
 | extend Region = tostring(LocationDetails.countryOrRegion)
